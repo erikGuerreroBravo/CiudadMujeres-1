@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CiudadMujeres</name>
+    </assembly>
+    <members>
+        <member name="M:CiudadMujeres.Controllers.AccountController.RegistrarAdministrador(CiudadMujeres.Models.Account.EditarAdmin)">
+            <summary>
+            Este endpoint se utiliza para registrar a un usuario como administrador dentro del sistema
+            </summary>
+            <param name="editarAdmin">la entidad para editar al administrador</param>
+            <returns>regresa una tarea o la accion de resultado</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.AccountController.EliminarAdministrador(CiudadMujeres.Models.Account.EditarAdmin)">
+            <summary>
+            Este metodo se encarga de eliminar  un administrador dentro del sistema
+            </summary>
+            <param name="editarAdmin">la entidad editarAdmin para proceder a eliminar la entidad</param>
+            <returns>una tarea o un actionresult</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.AccountController.Registrar(CiudadMujeres.Models.Account.UserCredencial)">
+            <summary>
+            Este metodo se encarga de registrar un usuario, solo se registran email y password
+            </summary>
+            <param name="userCredencial">el usuario con passwrd y email</param>
+            <returns>una entidad del tipo ResponseTokenAutenticacion</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.AccountController.CrearToken(CiudadMujeres.Models.Account.UserCredencial)">
+            <summary>
+            Este metodo se encarga de construir el token de seguridad del usuario
+            </summary>
+            <param name="userCredencial">la entidad del tipo userCredencial con las credenciales del usuario</param>
+            <returns>una entidad responseTokenAutenticacion que contiene el token de autenticacion</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.AccountController.Renovar">
+            <summary>
+            Este metodo se encarga de refrescar el token de seguridad de un usuario
+            </summary>
+            <returns>El token con la nueva actualizacion del token actualizado</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.ComentarioController.Post(System.Int32,CiudadMujeres.Models.Comentario.Crear)">
+            <summary>
+            Este endPoint se encarga de insertar un comentario relacionado a un libro 
+            </summary>
+            <param name="libroId"> el identificador del libro</param>
+            <param name="crear">la entidad comentario a insertar</param>
+            <returns>una tarea Task con un Resultado</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.LibroController.GetAllLibros">
+            <summary>
+            Este metodo se encarga de consultar todos los libros dentro del sistema
+            </summary>
+            <returns>un action result con la lista de libros</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.LibroController.Post(CiudadMujeres.Models.Libro.Crear)">
+            <summary>
+            Este metodo se encarga de insertar mediante post una entidad del tipo libro en el repositorio de la base de datos
+            </summary>
+            <param name="crearLibro">la entidad crearlibro</param>
+            <returns>una accion o una tarea</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.LibroController.Put(System.Int32,CiudadMujeres.Models.Libro.Actualizar)">
+            <summary>
+            Este endpoint consiste la entidad libro
+            </summary>
+            <param name="id">el identificador del libro</param>
+            <param name="actualizarLibro">la entidad a actualizar</param>
+            <returns>un codigo de respuesta</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.LibroController.Delete(System.Int32)">
+            <summary>
+            Este metodo se encarga de eliminar fisicamente una entidad del tipo libro
+            </summary>
+            <param name="id">el identificador de la entidad</param>
+            <returns>un resultado como tarea</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.PersonaController.GetAllPersonas">
+            <summary>
+            Este metodo se encarga de consultar a todas las personas dentro del sistema
+            </summary>
+            <returns>un action result con la lista de personas</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.PersonaController.Post(CiudadMujeres.Models.Persona.Crear)">
+            <summary>
+            Este metodo se encarga de insertar mediante post una entidad del tipo crear  que hace referencia a una persona
+            </summary>
+            <param name="crearPersona">la entidad persona en su modalidad crear</param>
+            <returns>una accion o una tarea</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.PersonaController.Put(System.Int32,CiudadMujeres.Models.Persona.Actualizar)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad dentro del sistema, la entidad a actualizar es actualizar y hace referencia
+            a una persona
+            </summary>
+            <param name="id">el identificador de la entidad para realizar la actualización</param>
+            <param name="actualizarPersona">la entidad del tipo actualizarpersona</param>
+            <returns>una accion o una tarea</returns>
+        </member>
+        <member name="M:CiudadMujeres.Controllers.PersonaController.Delete(System.Int32)">
+            <summary>
+            Este metodo se encarga de eliminar fisicamente una entidad del tipo persona
+            </summary>
+            <param name="id">el identificador de la entidad</param>
+            <returns>un resultado como tarea</returns>
+        </member>
+        <member name="T:CiudadMujeres.Filters.ValidacionFilterAttribute">
+            <summary>
+            Este filtro se encarga de validar las entidades e indetificar si vienen nulas o vienen invalidas en la entidad
+            </summary>
+        </member>
+        <member name="T:CiudadMujeres.Filters.ValidateEntityExistsAttribute`1">
+            <summary>
+            Esta entidad se encarga de validar una entidad  en base de datos a traves de la validacion de un atributo
+            </summary>
+            <typeparam name="T">una entidad del tipo entities que implementa la interfaz IEntity</typeparam>
+        </member>
+        <member name="M:CiudadMujeres.Filters.ValidateEntityExistsAttribute`1.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Una vez que se ejecuta el controlador y se hace la llamada al endpoint  este es el metodo que se llama o invoca de forma inmediata
+            </summary>
+            <param name="context">el contexto de la aplicación para tener referencia con las entidades de base de datos</param>
+        </member>
+        <member name="T:CiudadMujeres.Helpers.ServiceExtensions">
+            <summary>
+            Este metodo tiene la finalidad de configurar el cors y su invocación desde metodos remotos desde
+            servicios con fetch o ajax o axios
+            </summary>
+        </member>
+        <member name="M:CiudadMujeres.Helpers.ServiceExtensions.ConfigureCors(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Este es un metodo de extensión  que se encargará de  configurar mediante un archivo policy las cabeceras cors
+            </summary>
+            <param name="services">la interfaz IServiceCollection</param>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.GetComentariosAsync">
+            <summary>
+            Este metodo se encarga de consultar todas las entidades de comentario
+            </summary>
+            <returns>una tarea o una lista de comentarios</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.ComentarioExistsAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de verificar si existe un comentario por id antes de realizar una accion
+            </summary>
+            <param name="id">el identificador de la entidad</param>
+            <returns>una tarea con un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.GetComentarioAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de realizar la consulta por identificador de la entidad comentario
+            </summary>
+            <param name="id">el identificador</param>
+            <returns>una tarea con la entidad comentario</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.UpdateLibro(CiudadMujeres.Entities.Comentario)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad del tipo comentario
+            la actualización se realiza cambiando el estado de la entidad
+            </summary>
+            <param name="comentario">la entidad comentario</param>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.AddComentarioAsync(CiudadMujeres.Entities.Comentario)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="comentario">entidad comentario cargada de datos</param>
+            <returns>una tarea  </returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.SaveChangesAsync">
+            <summary>
+            Este metodo se encarga de realizar la confirmacion de la insercion
+            </summary>
+            <returns>una tarea con un valor booleano</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IComentarioRepository.DeleteLibro(CiudadMujeres.Entities.Comentario)">
+            <summary>
+            Este metodo se encarga de eliminar la entidad comentario
+            </summary>
+            <param name="comentario">la entidad comentario a eliminar</param>
+        </member>
+        <member name="T:CiudadMujeres.Infraestructure.ILibroRepository">
+            <summary>
+            Esta interfaz permite llevar a cabo los procesos de LibroRepository
+            </summary>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.GetLibrosAsync">
+            <summary>
+            Este metodo se encarga de consultar todas las entidades de libro
+            </summary>
+            <returns>una tarea o una lista de libros</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.LibroExistsAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de verificar si existe un libro por id antes de realizar una accion
+            </summary>
+            <param name="id">el identificador  de la entidad</param>
+            <returns>una tarea con un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.GetLibroAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de realizar la consulta por identificador de la entidad libro
+            </summary>
+            <param name="id">el identificador</param>
+            <returns>una tarea con la entidad libro</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.ValidarAutoresId(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Este metodo se encarga de realizar una validacion de los ID de la tabla autores con los id que le envia el endpoint
+            </summary>
+            <param name="IdAutores">los id que vienen del enpoint qu probablemente no esten almacenados en la base de datos</param>
+            <returns>un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.UpdateLibro(CiudadMujeres.Entities.Libro)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad del tipo libro
+            la actualización se realiza cambiando el estado de la entidad
+            </summary>
+            <param name="libro">la entidad libro</param>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.AddLibroAsync(CiudadMujeres.Entities.Libro)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="libro">entidad persona cargada de datos</param>
+            <returns>una tarea  </returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.SaveChangesAsync">
+            <summary>
+            Este metodo se encarga de realizar la confirmacion de la insercion
+            </summary>
+            <returns>una tarea con un valor booleano</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.ILibroRepository.DeleteLibro(CiudadMujeres.Entities.Libro)">
+            <summary>
+            Este metodo se encarga de eliminar la entidad libro
+            </summary>
+            <param name="libro">la entidad libro a eliminar</param>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.GetPersonasAsync">
+            <summary>
+            Este metodo se encarga de consultar todas las entidades de persona
+            </summary>
+            <returns>una tarea o una lista de personas</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.GetPersonaAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de consultar a una entidad del tipo persona por id
+            </summary>
+            <param name="id">el identificador de la entidad persona</param>
+            <returns>regresa una entidad del tipo persona</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.PersonaExistsAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de verificar si existe una persona por id antes de realizar una accion
+            </summary>
+            <param name="id">el identificador  de la entidad</param>
+            <returns>una tarea con un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.AddPersona(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="persona">entidad persona cargada de datos</param>
+            <returns>una tarea  </returns>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.UpdatePersona(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad del tipo persona
+            la actualización se realiza cambiando el estado de la entidad
+            </summary>
+            <param name="persona">la entidad persona</param>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.DeletePersona(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de eliminar la entidad persona
+            </summary>
+            <param name="persona">la entidad persona a eliminar</param>
+        </member>
+        <member name="M:CiudadMujeres.Infraestructure.IPersonaRepository.SaveChangesAsync">
+            <summary>
+            Este metodo se encarga de realizar la confirmacion de la insercion
+            </summary>
+            <returns>una tarea con un valor booleano</returns>
+        </member>
+        <member name="T:CiudadMujeres.Models.Account.EditarAdmin">
+            <summary>
+            Esta clase representa una entidad del tipo crear administrador, su funcionalidad consiste en 
+            registrar un usuario admnistrador en el sistema
+            </summary>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.#ctor(CiudadMujeres.Data.ApplicationContext)">
+            <summary>
+            este es el contructor d ela clase y se inyecta la entidad 
+            </summary>
+            <param name="contexto">la entidad o clase que se encarga de la conexion a la base de datos</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.GetComentariosAsync">
+            <summary>
+            Este metodo se encarga de consultar todas las entidades de comentario
+            </summary>
+            <returns>una tarea o una lista de comentarios</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.ComentarioExistsAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de verificar si existe un comentario por id antes de realizar una accion
+            </summary>
+            <param name="id">el identificador de la entidad</param>
+            <returns>una tarea con un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.GetComentarioAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de realizar la consulta por identificador de la entidad comentario
+            </summary>
+            <param name="id">el identificador</param>
+            <returns>una tarea con la entidad comentario</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.UpdateLibro(CiudadMujeres.Entities.Comentario)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad del tipo comentario
+            la actualización se realiza cambiando el estado de la entidad
+            </summary>
+            <param name="comentario">la entidad comentario</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.AddComentarioAsync(CiudadMujeres.Entities.Comentario)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="comentario">entidad comentario cargada de datos</param>
+            <returns>una tarea  </returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.SaveChangesAsync">
+            <summary>
+            Este metodo se encarga de realizar la confirmacion de la insercion
+            </summary>
+            <returns>una tarea con un valor booleano</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.ComentarioRepository.DeleteLibro(CiudadMujeres.Entities.Comentario)">
+            <summary>
+            Este metodo se encarga de eliminar la entidad comentario
+            </summary>
+            <param name="comentario">la entidad comentario a eliminar</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.#ctor(CiudadMujeres.Data.ApplicationContext)">
+            <summary>
+            este es el contructor d ela clase y se inyecta la entidad 
+            </summary>
+            <param name="contexto">la entidad o clase que se encarga de la conexion a la base de datos</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.GetLibrosAsync">
+            <summary>
+            Este metodo se encarga de consultar todas las entidades de libro
+            </summary>
+            <returns>una tarea o una lista de libros</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.LibroExistsAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de verificar si existe un libro por id antes de realizar una accion
+            </summary>
+            <param name="id">el identificador  de la entidad</param>
+            <returns>una tarea con un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.ValidarAutoresId(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Este metodo se encarga de realizar una validacion de los ID de la tabla autores con los id que le envia el endpoint
+            </summary>
+            <param name="IdAutores">los id que vienen del enpoint qu probablemente no esten almacenados en la base de datos</param>
+            <returns>un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.GetLibroAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de realizar la consulta por identificador de la entidad libro
+            </summary>
+            <param name="id">el identificador</param>
+            <returns>una tarea con la entidad libro</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.UpdateLibro(CiudadMujeres.Entities.Libro)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad del tipo libro
+            la actualización se realiza cambiando el estado de la entidad
+            </summary>
+            <param name="libro">la entidad libro</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.AddLibroAsync(CiudadMujeres.Entities.Libro)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="libro">entidad persona cargada de datos</param>
+            <returns>una tarea  </returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.SaveChangesAsync">
+            <summary>
+            Este metodo se encarga de realizar la confirmacion de la insercion
+            </summary>
+            <returns>una tarea con un valor booleano</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.LibroRepository.DeleteLibro(CiudadMujeres.Entities.Libro)">
+            <summary>
+            Este metodo se encarga de eliminar la entidad libro
+            </summary>
+            <param name="libro">la entidad libro a eliminar</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.#ctor(CiudadMujeres.Data.ApplicationContext)">
+            <summary>
+            este es el contructor d ela clase y se inyecta la entidad 
+            </summary>
+            <param name="contexto">la entidad o clase que se encarga de la conexion a la base de datos</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.GetPersonasAsync">
+            <summary>
+            Este metodo se encarga de consultar todas las entidades de persona
+            </summary>
+            <returns>una tarea o una lista de personas</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.GetPersonaAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de consultar a una entidad del tipo persona por id
+            </summary>
+            <param name="id">el identificador de la entidad persona</param>
+            <returns>regresa una entidad del tipo persona</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.PersonaExistsAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de verificar si existe una persona por id antes de realizar una accion
+            </summary>
+            <param name="id">el identificador  de la entidad</param>
+            <returns>una tarea con un valor boolean</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.GetPersonasAsync_Asc(System.String)">
+            <summary>
+            Este metodo se encarga de realizar una busqueda ascendente por nombre de la entidad persona
+            </summary>
+            <param name="Nombre">el nombre de la entidad persona</param>
+            <returns>una lista o coleccion de personas, tarea que contiene una lista de personas</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.GetPersonasAsync_Desc(System.String)">
+            <summary>
+            Este metodo se encarga de realizar una busqueda descendente por nombre de la entidad persona
+            </summary>
+            <param name="Nombre">el nombre de la entidad persona</param>
+            <returns>una lista o coleccion de personas, tarea que contiene una lista de personas</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.GetPersonasAsync(System.Int32)">
+            <summary>
+            Este metodo se encarga de realizar la consulta por identificador de la entidad persona
+            </summary>
+            <param name="id">el identificador</param>
+            <returns>una tarea con la entidad persona</returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.AddPersonaAsync(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="persona">entidad persona cargada de datos</param>
+            <returns>una tarea  </returns>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.AddPersona(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de realizar el agregado temporal de la entidad
+            </summary>
+            <param name="persona">entidad persona cargada de datos</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.UpdatePersona(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de actualizar una entidad del tipo persona
+            la actualización se realiza cambiando el estado de la entidad
+            </summary>
+            <param name="persona">la entidad persona</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.DeletePersona(CiudadMujeres.Entities.Persona)">
+            <summary>
+            Este metodo se encarga de eliminar la entidad persona
+            </summary>
+            <param name="persona">la entidad persona a eliminar</param>
+        </member>
+        <member name="M:CiudadMujeres.Services.PersonaRepository.SaveChangesAsync">
+            <summary>
+            Este metodo se encarga de realizar la confirmacion de la insercion
+            </summary>
+            <returns>una tarea con un valor booleano</returns>
+        </member>
+    </members>
+</doc>
