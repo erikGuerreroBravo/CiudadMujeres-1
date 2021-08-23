@@ -1,11 +1,4 @@
 export default {
-    /*
-        access: {
-            requiresLogin: true,
-            requiredPermissions: ['admin'],
-            permissionType: 'AtLeastOne'
-        },
-     */
     authorize (requiresLogin, requiredPermissions, permissionType) {
         let result = 'authorized'
         const user = JSON.parse(window.localStorage.getItem('auth-user')) || undefined
