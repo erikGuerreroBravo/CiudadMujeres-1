@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Desktop\\CiudadMujeres\\CiudadMujeres\\CiudadMujeres.csproj": {}
+    "C:\\Users\\erikg\\source\\repos\\CiudadMujeres-1\\CiudadMujeres\\CiudadMujeres.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Desktop\\CiudadMujeres\\CiudadMujeres\\CiudadMujeres.csproj": {
+    "C:\\Users\\erikg\\source\\repos\\CiudadMujeres-1\\CiudadMujeres\\CiudadMujeres.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\CiudadMujeres\\CiudadMujeres\\CiudadMujeres.csproj",
+        "projectUniqueName": "C:\\Users\\erikg\\source\\repos\\CiudadMujeres-1\\CiudadMujeres\\CiudadMujeres.csproj",
         "projectName": "CiudadMujeres",
-        "projectPath": "C:\\Users\\Dell\\Desktop\\CiudadMujeres\\CiudadMujeres\\CiudadMujeres.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Desktop\\CiudadMujeres\\CiudadMujeres\\obj\\",
+        "projectPath": "C:\\Users\\erikg\\source\\repos\\CiudadMujeres-1\\CiudadMujeres\\CiudadMujeres.csproj",
+        "packagesPath": "C:\\Users\\erikg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\erikg\\source\\repos\\CiudadMujeres-1\\CiudadMujeres\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\erikg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -97,6 +97,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.14, 3.1.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
